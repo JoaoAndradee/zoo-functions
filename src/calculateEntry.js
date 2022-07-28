@@ -1,3 +1,5 @@
+// Iniciando o projeto!
+
 const data = require('../data/zoo_data');
 
 function countEntrants(entrants) {
