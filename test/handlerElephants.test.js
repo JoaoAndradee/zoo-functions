@@ -1,5 +1,5 @@
 const data = require('../data/zoo_data');
-const { getElephants, averageAge, computeData, handlerElephants } = require('../src/handlerElephants');
+const { handlerElephants, getElephants, averageAge, computeData } = require('../src/handlerElephants');
 
 describe('Testes da função HandlerElephants', () => {
   it('Verifica se getElephantes é uma função', () => {
