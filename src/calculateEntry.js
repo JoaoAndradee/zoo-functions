@@ -1,5 +1,14 @@
 const data = require('../data/zoo_data');
 
+const pessoas = [
+  { name: 'Lara Carvalho', age: 5 },
+  { name: 'Frederico Moreira', age: 5 },
+  { name: 'Pedro Henrique Carvalho', age: 5 },
+  { name: 'Maria Costa', age: 18 },
+  { name: 'Núbia Souza', age: 18 },
+  { name: 'Carlos Nogueira', age: 50 },
+];
+
 function countEntrants(entrants) {
   let child = 0;
   let adult = 0;
@@ -22,23 +31,23 @@ const empatyTickets = (entrants) => {
   }
 };
 
-/* eslint-disable no-param-reassign */
-// Eu desabilitei o no-param-reassign do eslint pois pra mim não faz sentido não poder modificar o acumulador no método do reduce, tentei procurar uma alternativa mas não encontrei. Acho que até seria possível no máximo usar o spread como nesse exemplo (https://stackoverflow.com/questions/41625399/how-to-handle-eslint-no-param-reassign-rule-in-array-prototype-reduce-function)mas seria gambiarra em cima de gambiarra e só resultaria em mais linhas de códigos e espaço na memória que não faz sentido nenhum, nessa página do forum o pessoal diz que é melhor mesmo só desativar o no-param-reassign.
-
 function calculateEntry(entrants) {
   if (empatyTickets(entrants) === 0) {
     return 0;
   }
   return Object.entries(countEntrants(entrants)).reduce((acc, valor) => {
+    let total = acc;
     if (valor[0] === 'child') {
-      acc += valor[1] * 20.99;
+      total += valor[1] * 20.99;
     } else if (valor[0] === 'adult') {
-      acc += valor[1] * 49.99;
+      total += valor[1] * 49.99;
     } else if (valor[0] === 'senior') {
-      acc += valor[1] * 24.99;
+      total += valor[1] * 24.99;
     }
-    return acc;
+    return total;
   }, 0);
 }
+
+console.log(calculateEntry(pessoas));
 
 module.exports = { calculateEntry, countEntrants };
