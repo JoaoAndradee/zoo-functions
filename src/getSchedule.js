@@ -33,7 +33,6 @@ const getDay = (dia) => {
 };
 
 function getSchedule(scheduleTarget) {
-  // seu código aqui
   if (Object.keys(zooHours()).find((e) => e === scheduleTarget)) {
     return getDay(scheduleTarget);
   }
