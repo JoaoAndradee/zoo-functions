@@ -27,12 +27,13 @@ function countEntrants(entrants) {
 
 const empatyTickets = (entrants) => {
   if (!entrants || Object.keys(entrants).length === 0) {
-    return 0;
+    return true;
   }
 };
 
 function calculateEntry(entrants) {
-  if (empatyTickets(entrants) === 0) {
+  if (empatyTickets(entrants)) {
+    console.log('chegou aqui');
     return 0;
   }
   return Object.entries(countEntrants(entrants)).reduce((acc, valor) => {
@@ -48,6 +49,4 @@ function calculateEntry(entrants) {
   }, 0);
 }
 
-console.log(calculateEntry(pessoas));
-
-module.exports = { calculateEntry, countEntrants };
+module.exports = { calculateEntry, countEntrants, empatyTickets };
